@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\User;
 
 class AuthController extends Controller
 {
@@ -29,6 +30,8 @@ class AuthController extends Controller
 
     public function login(Request $request)
     {
+        $userData=User::all()->first();
+        dd($userData);
         $request->validate([
             'username'=>'required',
             'password'=>'required',

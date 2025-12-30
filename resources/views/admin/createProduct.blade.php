@@ -1,8 +1,7 @@
 @extends('layouts.admin')
 
 @section('content')
-    <!-- PAGE HEADER -->
-    <div class="px-1.5 pt-2 sm:px-8 sm:pt-5">
+    <div class="px-1 pt-2 sm:px-8 sm:pt-5">
         <h1 class="text-2xl sm:text-3xl font-bold">
             Add New Product
         </h1>
@@ -10,19 +9,15 @@
             Create and publish a new product
         </p>
     </div>
-
-    <!-- FORM CARD -->
-    <div class="px-1.5 sm:px-8 mt-6">
+    <div class="px-1 sm:px-8 mt-6">
         <div class="max-w-4xl mx-auto
-                    rounded-3xl
+                    rounded-2xl sm:rounded-3xl
                     bg-white/10 backdrop-blur-xl
                     border border-white/20
                     shadow-2xl
                     p-5 sm:p-10">
 
             <form class="space-y-8">
-
-                <!-- PRODUCT IMAGE -->
                 <div>
                     <label class="block text-sm font-medium mb-3 opacity-80">
                         Product Image
@@ -45,8 +40,6 @@
                         <input type="file" class="hidden">
                     </div>
                 </div>
-
-                <!-- PRODUCT NAME -->
                 <div>
                     <label class="block text-sm font-medium mb-2 opacity-80">
                         Product Name
@@ -58,8 +51,6 @@
                                text-base sm:text-lg
                                focus:outline-none focus:ring-2 focus:ring-blue-500">
                 </div>
-
-                <!-- DESCRIPTION -->
                 <div>
                     <label class="block text-sm font-medium mb-2 opacity-80">
                         Description
@@ -72,11 +63,7 @@
                                focus:outline-none focus:ring-2 focus:ring-blue-500"
                         placeholder="Write product description..."></textarea>
                 </div>
-
-                <!-- PRICE & STOCK -->
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-
-                    <!-- PRICE -->
                     <div>
                         <label class="block text-sm font-medium mb-2 opacity-80">
                             Price (₹)
@@ -88,8 +75,6 @@
                                    text-base sm:text-lg
                                    focus:outline-none focus:ring-2 focus:ring-blue-500">
                     </div>
-
-                    <!-- STOCK -->
                     <div>
                         <label class="block text-sm font-medium mb-2 opacity-80">
                             Stock Quantity
@@ -103,8 +88,6 @@
                     </div>
 
                 </div>
-
-                <!-- CATEGORY -->
                 <div>
                     <label class="block text-sm font-medium mb-2 opacity-80">
                         Category
@@ -121,8 +104,6 @@
                         <option class="bg-[#24243e]">Accessories</option>
                     </select>
                 </div>
-
-                <!-- PRODUCT STATUS -->
                 <div class="flex items-center justify-between
                             p-4 sm:p-5 rounded-2xl
                             bg-white/10 border border-white/20">
@@ -134,8 +115,6 @@
                             Visible to customers
                         </p>
                     </div>
-
-                    <!-- TOGGLE -->
                     <label class="relative inline-flex items-center cursor-pointer">
                         <input type="checkbox" class="sr-only peer" checked>
                         <div class="w-12 h-7 sm:w-14 sm:h-8 bg-white/30 rounded-full
@@ -149,8 +128,6 @@
                         </div>
                     </label>
                 </div>
-
-                <!-- ACTION BUTTONS -->
                 <div class="space-y-4 pt-4">
                     <button
                         class="w-full h-14 sm:h-16

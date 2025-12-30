@@ -11,8 +11,8 @@
         <a href="products" class="block px-4 py-3 rounded-xl hover:bg-white/10 transition">
             📦 Products
         </a>
-        <a href="#" class="block px-4 py-3 rounded-xl hover:bg-white/10 transition">
-            ⚙️ Settings
+        <a href="/blogs" class="block px-4 py-3 rounded-xl hover:bg-white/10 transition">
+            📝 Blogs
         </a>
     </nav>
 

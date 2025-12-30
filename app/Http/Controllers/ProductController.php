@@ -13,6 +13,6 @@ class ProductController extends Controller
 
     public function create()
     {
-        return view('admin.CreateProduct', ['title' => 'Create Product']);
+        return view('admin.createProduct', ['title' => 'Create Product']);
     }
 }

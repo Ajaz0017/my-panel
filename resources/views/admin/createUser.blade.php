@@ -4,7 +4,7 @@
 
 
     <!-- PAGE HEADER -->
-    <div class="px-1.5 pt-2 sm:px-8 sm:pt-5">
+    <div class="px-1 pt-2 sm:px-8 sm:pt-5">
         <h1 class="text-2xl sm:text-3xl font-bold">
         Add New User
         </h1>
@@ -14,9 +14,9 @@
     </div>
 
     <!-- FORM CARD -->
-    <div class="px-1.5 sm:px-8 mt-6">
+    <div class="px-1 sm:px-8 mt-6">
         <div class="max-w-3xl mx-auto
-                    rounded-3xl
+                    rounded-2xl sm:rounded-3xl
                     bg-white/10 backdrop-blur-xl
                     border border-white/20
                     shadow-2xl

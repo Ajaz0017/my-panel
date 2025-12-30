@@ -6,6 +6,6 @@
         <a href="/" class="py-3 text-blue-400 font-semibold">🏠<br>Dashboard</a>
         <a href="/users" class="py-3 opacity-70">👥<br>Users</a>
         <a href="/products" class="py-3 opacity-70">📦<br>Products</a>
-        <a href="#" class="py-3 opacity-70">⚙️<br>Settings</a>
+        <a href="/blogs" class="py-3 opacity-70">📝<br>Blogs</a>
     </div>
 </nav>

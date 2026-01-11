@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-class ageChecker
+class BlogAccess
 {
     /**
      * Handle an incoming request.
@@ -15,9 +15,13 @@ class ageChecker
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if ($request->age<18) {
-            die('under age! you can no t access this website');
+        if (
+            !auth()->check() ||
+            !in_array(auth()->user()->role, ['manager', 'admin', 'content_manager'])
+        ) {
+            abort(403, 'Unauthorized');
         }
+
         return $next($request);
     }
 }

@@ -15,12 +15,10 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware): void {
-        // $middleware->appendToGroup('access',[
-        //     ageChecker::class,
-        //     CountryChecker::class,
-        // ]);
         $middleware->alias([
             'manager' => ManagerOnly::class,
+            'product.access' => \App\Http\Middleware\ProductAccess::class,
+            'blog.access' => \App\Http\Middleware\BlogAccess::class,
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {

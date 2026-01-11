@@ -25,7 +25,7 @@
                 <label class="block text-sm font-medium mb-2 opacity-80">
                     Blog Title
                 </label>
-                <input type="text" name="title"
+                <input type="text" name="title" id="title"
                        placeholder="Enter blog title"
                        class="w-full h-14 sm:h-16 px-4 sm:px-5
                               rounded-xl bg-white/10 border border-white/20
@@ -36,7 +36,7 @@
                 <label class="block text-sm font-medium mb-2 opacity-80">
                     Slug
                 </label>
-                <input type="text" name="slug"
+                <input type="text" name="slug" id="slug"
                        placeholder="example-blog-title"
                        class="w-full h-14 px-4 sm:px-5
                               rounded-xl bg-white/10 border border-white/20
@@ -125,5 +125,20 @@
         </form>
     </div>
 </div>
+<script>
+    const titleInput = document.getElementById('title');
+    const slugInput  = document.getElementById('slug');
+
+    titleInput.addEventListener('input', function () {
+        const slug = this.value
+            .toLowerCase()
+            .trim()
+            .replace(/[^a-z0-9\s-]/g, '')
+            .replace(/\s+/g, '-')
+            .replace(/-+/g, '-');
+
+        slugInput.value = slug;
+    });
+</script>
 
 @endsection

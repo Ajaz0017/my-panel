@@ -19,6 +19,7 @@ return Application::configure(basePath: dirname(__DIR__))
             'manager' => ManagerOnly::class,
             'product.access' => \App\Http\Middleware\ProductAccess::class,
             'blog.access' => \App\Http\Middleware\BlogAccess::class,
+            'api.auth' => \App\Http\Middleware\ApiAuth::class,
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {

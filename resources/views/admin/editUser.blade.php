@@ -78,8 +78,8 @@
                                focus:ring-2 focus:ring-blue-500">
                     <option value="admin" class="bg-[#24243e]"   @selected($user->role === 'admin')>Admin</option>
                     <option value="manager" class="bg-[#24243e]" @selected($user->role === 'manager')>Manager</option>
-                    <option value="manager" class="bg-[#24243e]" @selected($user->role === 'product_manager')>Product Manager</option>
-                    <option value="manager" class="bg-[#24243e]" @selected($user->role === 'content_manager')>Content Manager</option>
+                    <option value="product_manager" class="bg-[#24243e]" @selected($user->role === 'product_manager')>Product Manager</option>
+                    <option value="content_manager" class="bg-[#24243e]" @selected($user->role === 'content_manager')>Content Manager</option>
                     <option value="user"  class="bg-[#24243e]"  @selected($user->role === 'user')>User</option>
                 </select>
             </div>

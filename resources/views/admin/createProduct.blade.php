@@ -17,34 +17,47 @@
                     shadow-2xl
                     p-5 sm:p-10">
 
-            <form class="space-y-8">
+            <form method="POST"
+                action="/products"
+                enctype="multipart/form-data"
+                class="space-y-8">
+                @csrf
                 <div>
                     <label class="block text-sm font-medium mb-3 opacity-80">
-                        Product Image
+                        Product Images
                     </label>
 
-                    <div class="flex flex-col items-center justify-center
-                                h-48 sm:h-56
+                    <div class="relative
                                 rounded-2xl
                                 border-2 border-dashed border-white/30
                                 bg-white/5
-                                text-center cursor-pointer
+                                p-6
                                 hover:bg-white/10 transition">
-                        <div class="text-4xl mb-2">📦</div>
-                        <p class="text-sm opacity-70">
-                            Tap to upload product image
-                        </p>
-                        <p class="text-xs opacity-40 mt-1">
-                            JPG, PNG (max 2MB)
-                        </p>
-                        <input type="file" class="hidden">
+
+                        <input type="file" name="images[]" multiple
+                            id="imageInput"
+                            class="absolute inset-0 opacity-0 cursor-pointer">
+
+                        <div class="text-center pointer-events-none">
+                            <div class="text-4xl mb-2">📦</div>
+                            <p class="text-sm opacity-70">Click to upload product images</p>
+                            <p class="text-xs opacity-40 mt-1">JPG, PNG (max 2MB)</p>
+                        </div>
+
+                        <!-- Preview Grid -->
+                        <div id="previewGrid"
+                            class="mt-5 grid grid-cols-3 sm:grid-cols-4 gap-3">
+                        </div>
                     </div>
                 </div>
+
+
                 <div>
                     <label class="block text-sm font-medium mb-2 opacity-80">
                         Product Name
                     </label>
                     <input type="text"
+                        name="name"
                         class="w-full h-14 sm:h-16 px-4 sm:px-5
                                rounded-2xl
                                bg-white/10 border border-white/20
@@ -56,6 +69,7 @@
                         Description
                     </label>
                     <textarea rows="4"
+                        name="description"
                         class="w-full px-4 sm:px-5 py-4
                                rounded-2xl
                                bg-white/10 border border-white/20
@@ -69,6 +83,7 @@
                             Price (₹)
                         </label>
                         <input type="number"
+                            name="price"
                             class="w-full h-14 sm:h-16 px-4 sm:px-5
                                    rounded-2xl
                                    bg-white/10 border border-white/20
@@ -80,6 +95,7 @@
                             Stock Quantity
                         </label>
                         <input type="number"
+                            name="stock"
                             class="w-full h-14 sm:h-16 px-4 sm:px-5
                                    rounded-2xl
                                    bg-white/10 border border-white/20
@@ -93,6 +109,7 @@
                         Category
                     </label>
                     <select
+                        name="category"
                         class="w-full h-14 sm:h-16 px-4 sm:px-5
                                rounded-2xl
                                bg-white/10 border border-white/20
@@ -116,7 +133,7 @@
                         </p>
                     </div>
                     <label class="relative inline-flex items-center cursor-pointer">
-                        <input type="checkbox" class="sr-only peer" checked>
+                        <input type="checkbox" name="is_active" class="sr-only peer" checked>
                         <div class="w-12 h-7 sm:w-14 sm:h-8 bg-white/30 rounded-full
                                     peer-checked:bg-blue-600
                                     after:content-['']
@@ -152,4 +169,74 @@
         </div>
     </div>
 </div>
+<script>
+const input = document.getElementById('imageInput');
+const previewGrid = document.getElementById('previewGrid');
+
+let selectedFiles = [];
+
+input.addEventListener('change', (e) => {
+    Array.from(e.target.files).forEach(file => {
+        selectedFiles.push(file);
+    });
+
+    renderPreviews();
+    syncInputFiles();
+});
+
+function renderPreviews() {
+    previewGrid.innerHTML = '';
+
+    selectedFiles.forEach((file, index) => {
+        const reader = new FileReader();
+
+        reader.onload = e => {
+            const wrapper = document.createElement('div');
+            wrapper.className = 'relative group';
+
+            const img = document.createElement('img');
+            img.src = e.target.result;
+            img.className = `
+                h-24 w-full object-cover rounded-xl
+                border border-white/20
+                shadow-md
+            `;
+
+            const removeBtn = document.createElement('button');
+            removeBtn.innerHTML = '✕';
+            removeBtn.className = `
+                absolute -top-2 -right-2
+                w-6 h-6 rounded-full
+                bg-red-500 text-white text-xs
+                opacity-0 group-hover:opacity-100
+                transition shadow-lg cursor-pointer
+            `;
+
+            removeBtn.onclick = () => {
+                selectedFiles.splice(index, 1);
+                renderPreviews();
+                syncInputFiles();
+            };
+
+            wrapper.appendChild(img);
+            wrapper.appendChild(removeBtn);
+            previewGrid.appendChild(wrapper);
+        };
+
+        reader.readAsDataURL(file);
+    });
+}
+
+/**
+ * VERY IMPORTANT:
+ * Sync custom file array back to input
+ */
+function syncInputFiles() {
+    const dataTransfer = new DataTransfer();
+    selectedFiles.forEach(file => dataTransfer.items.add(file));
+    input.files = dataTransfer.files;
+}
+</script>
+
+
 @endsection

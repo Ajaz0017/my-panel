@@ -4,41 +4,44 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
-    public function SignUp ()
+    public function showLogin()
     {
-        return view('signUp');
-    }
-
-    public function register (Request $request)
-    {
-        $request->validate([
-            'firstName'=> 'required',
-            // 'firstName'=> 'required|uppercase',
-            'lastName'=> 'required',
-            'email'=> 'required|email',
-            'password' => 'required|min:5',
-            'confirmPassword' => 'required|min:5|same:password',
-        ],[
-            // 'firstName.uppercase'=> 'First Name Should be in uppercase'
-        ]);
-
-        return $request;
+        return view('login', ['title' => 'Login']);
     }
 
     public function login(Request $request)
     {
-        $userData=User::all()->first();
-        dd($userData);
         $request->validate([
-            'username'=>'required',
-            'password'=>'required',
-        ],[
-            'username.required'=>'username is required',
-            'password.required'=>'password is required',
+            'email'    => 'required|email',
+            'password' => 'required',
         ]);
-        return $request;
+
+        $credentials = $request->only('email', 'password');
+
+        $credentials['is_active'] = 1;
+
+        if (Auth::attempt($credentials, $request->filled('remember'))) {
+            $request->session()->regenerate();
+
+            return redirect()->intended('/');
+        }
+
+        return back()->withErrors([
+            'email' => 'Invalid credentials or inactive user',
+        ]);
+    }
+
+    public function logout(Request $request)
+    {
+        Auth::logout();
+
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
+        return redirect('/login');
     }
 }

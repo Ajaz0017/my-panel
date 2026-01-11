@@ -22,14 +22,17 @@
                     shadow-2xl
                     p-5 sm:p-10">
 
-            <form class="space-y-7">
+                    <form method="POST"
+                        action="/users"
+                        class="space-y-7">
+                        @csrf
 
                 <!-- FULL NAME -->
                 <div>
                     <label class="block text-sm font-medium mb-2 opacity-80">
                         Full Name
                     </label>
-                    <input type="text"
+                    <input type="text" name="name"
                         class="w-full h-14 sm:h-16 px-4 sm:px-5
                                rounded-2xl
                                bg-white/10 border border-white/20
@@ -42,7 +45,7 @@
                     <label class="block text-sm font-medium mb-2 opacity-80">
                         Email Address
                     </label>
-                    <input type="email"
+                    <input type="email" name="email"
                         class="w-full h-14 sm:h-16 px-4 sm:px-5
                                rounded-2xl
                                bg-white/10 border border-white/20
@@ -55,7 +58,7 @@
                     <label class="block text-sm font-medium mb-2 opacity-80">
                         Password
                     </label>
-                    <input type="password"
+                    <input type="password" name="password"
                         class="w-full h-14 sm:h-16 px-4 sm:px-5
                                rounded-2xl
                                bg-white/10 border border-white/20
@@ -68,16 +71,18 @@
                     <label class="block text-sm font-medium mb-2 opacity-80">
                         Role
                     </label>
-                    <select
+                    <select name="role"
                         class="w-full h-14 sm:h-16 px-4 sm:px-5
                                rounded-2xl
                                bg-white/10 border border-white/20
                                text-base sm:text-lg
                                focus:outline-none focus:ring-2 focus:ring-blue-500">
-                        <option class="bg-[#24243e]">Select Role</option>
-                        <option class="bg-[#24243e]">Admin</option>
-                        <option class="bg-[#24243e]">Manager</option>
-                        <option class="bg-[#24243e]">User</option>
+                        <option class="bg-[#24243e]" value="">Select Role</option>
+                        <option class="bg-[#24243e]" value="manager">Manager</option>
+                        <option class="bg-[#24243e]" value="admin">Admin</option>
+                        <option class="bg-[#24243e]" value="product_manager">Product Manager</option>
+                        <option class="bg-[#24243e]" value="content_manager">Content Manager</option>
+                        <option class="bg-[#24243e]" value="user">User</option>
                     </select>
                 </div>
 
@@ -95,7 +100,7 @@
                     </div>
 
                     <label class="relative inline-flex items-center cursor-pointer">
-                        <input type="checkbox" class="sr-only peer" checked>
+                        <input type="checkbox" name="is_active" class="sr-only peer" checked>
                         <div class="w-12 h-7 sm:w-14 sm:h-8 bg-white/30 rounded-full
                                     peer-checked:bg-blue-600
                                     after:content-['']

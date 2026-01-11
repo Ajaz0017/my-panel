@@ -25,7 +25,7 @@
             bg-gradient-to-br from-[#0f0c29] via-[#302b63] to-[#24243e]
             p-4 sm:p-6">
 
-    <form action="login-user" method="POST"
+    <form action="/login" method="POST"
           class="backdrop-blur-xl bg-white/10 border border-white/20 
                  shadow-2xl rounded-2xl 
                  w-full max-w-sm sm:max-w-md md:max-w-lg 
@@ -39,12 +39,12 @@
 
         {{-- USERNAME --}}
         <div>
-            <label class="text-sm font-semibold opacity-90">Username</label>
-            <input type="text" name="username" value="{{old('username')}}" placeholder="enter username"
+            <label class="text-sm font-semibold opacity-90">Email</label>
+            <input type="text" name="email" value="{{old('email')}}" placeholder="enter email"
                    class="w-full mt-1 p-3 rounded-xl bg-white/10 border border-white/20 
                           focus:outline-none focus:ring-2 focus:ring-blue-400 
                           placeholder-gray-300 text-sm sm:text-base">
-            <p class="text-red-300 text-sm">@error('username'){{ $message }}@enderror</p>
+            <p class="text-red-300 text-sm">@error('email'){{ $message }}@enderror</p>
         </div>
 
         {{-- PASSWORD --}}
@@ -59,21 +59,11 @@
 
         {{-- BUTTON --}}
         <button type="submit"
-                class="w-full py-3 rounded-xl bg-blue-600 hover:bg-blue-700 
+                class="w-full py-3 my-3 rounded-xl bg-blue-600 hover:bg-blue-700 
                        font-semibold text-white text-lg shadow-xl 
                        transition-all duration-300 hover:scale-[1.02]">
             Login
         </button>
-
-        {{-- SIGN UP LINK --}}
-        <p class="text-center text-sm opacity-80 mt-2">
-            No account? 
-            <a href="/sign-up" 
-               class="text-blue-400 hover:text-blue-300 font-semibold underline">
-               Create Account
-            </a>
-        </p>
-
     </form>
 </div>
 

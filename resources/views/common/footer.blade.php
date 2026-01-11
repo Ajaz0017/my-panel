@@ -3,9 +3,9 @@
 </footer> -->
 <nav class="fixed bottom-0 left-0 right-0 z-50 lg:hidden backdrop-blur-xl bg-white/10 border-t border-white/20">
     <div class="grid grid-cols-4 text-center text-xs">
-        <a href="/" class="py-3 text-blue-400 font-semibold">🏠<br>Dashboard</a>
-        <a href="/users" class="py-3 opacity-70">👥<br>Users</a>
-        <a href="/products" class="py-3 opacity-70">📦<br>Products</a>
-        <a href="/blogs" class="py-3 opacity-70">📝<br>Blogs</a>
+        <a href="/" class="py-3 {{ request()->is('/') ? 'text-blue-400 font-semibold' : 'opacity-70' }}">🏠<br>Dashboard</a>
+        <a href="/users" class="py-3 {{ request()->is('users*') ? 'text-blue-400 font-semibold' : 'opacity-70' }}">👥<br>Users</a>
+        <a href="/products" class="py-3 {{ request()->is('products*') ? 'text-blue-400 font-semibold' : 'opacity-70' }}">📦<br>Products</a>
+        <a href="/blogs" class="py-3 {{ request()->is('blogs*') ? 'text-blue-400 font-semibold' : 'opacity-70' }}">📝<br>Blogs</a>
     </div>
 </nav>

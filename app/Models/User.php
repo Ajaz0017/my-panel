@@ -21,6 +21,9 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'remember_token',
+        'role',
+        'is_active',
     ];
 
     /**
@@ -45,4 +48,10 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    public function isManager(): bool
+    {
+        return $this->role === 'manager';
+    }
+
 }

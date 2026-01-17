@@ -7,10 +7,6 @@ RUN apt-get update && apt-get install -y \
 
 RUN a2enmod rewrite
 
-# 👉 Render PORT fix
-RUN sed -i 's/Listen 80/Listen ${PORT}/' /etc/apache2/ports.conf \
- && sed -i 's/:80>/:${PORT}>/' /etc/apache2/sites-available/000-default.conf
-
 ENV APACHE_DOCUMENT_ROOT=/var/www/public
 RUN sed -ri 's!/var/www/html!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/sites-available/*.conf \
  && sed -ri 's!/var/www/!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/apache2.conf /etc/apache2/conf-available/*.conf
@@ -24,7 +20,11 @@ WORKDIR /var/www
 COPY . .
 
 RUN composer install --no-dev --optimize-autoloader
+
 RUN php artisan storage:link || true
+RUN php artisan config:clear && php artisan route:clear && php artisan view:clear
+
 RUN npm install && npm run build
 
 RUN chown -R www-data:www-data storage bootstrap/cache
+RUN chmod -R 775 storage bootstrap/cache

@@ -41,4 +41,4 @@ RUN chmod -R 775 storage bootstrap/cache
 EXPOSE 10000
 
 # 1️⃣2️⃣ Start Laravel on Render PORT
-CMD ["sh", "-c", "php -S 0.0.0.0:$PORT server.php"]
+CMD ["sh", "-c", "php -S 0.0.0.0:$PORT -t public public/index.php"]

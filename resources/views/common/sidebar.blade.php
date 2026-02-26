@@ -2,16 +2,16 @@
     <div class="p-6 text-2xl font-bold">Admin</div>
 
     <nav class="flex-1 px-4 space-y-2">
-        <a href="/" class="block px-4 py-3 rounded-xl transition {{ request()->is('/') ? 'bg-blue-600 shadow' : 'hover:bg-white/10' }}">
+        <a href="/admin" class="block px-4 py-3 rounded-xl transition {{ request()->is('/') ? 'bg-blue-600 shadow' : 'hover:bg-white/10' }}">
             🏠 Dashboard
         </a>
-        <a href="/users" class="block px-4 py-3 rounded-xl transition {{ request()->is('users*') ? 'bg-blue-600 shadow' : 'hover:bg-white/10' }}">
+        <a href="/admin/users" class="block px-4 py-3 rounded-xl transition {{ request()->is('users*') ? 'bg-blue-600 shadow' : 'hover:bg-white/10' }}">
             👥 Users
         </a>
-        <a href="/products" class="block px-4 py-3 rounded-xl transition {{ request()->is('products*') ? 'bg-blue-600 shadow' : 'hover:bg-white/10' }}">
+        <a href="/admin/products" class="block px-4 py-3 rounded-xl transition {{ request()->is('products*') ? 'bg-blue-600 shadow' : 'hover:bg-white/10' }}">
             📦 Products
         </a>
-        <a href="/blogs" class="block px-4 py-3 rounded-xl transition {{ request()->is('blogs*') ? 'bg-blue-600 shadow' : 'hover:bg-white/10' }}">
+        <a href="/admin/blogs" class="block px-4 py-3 rounded-xl transition {{ request()->is('blogs*') ? 'bg-blue-600 shadow' : 'hover:bg-white/10' }}">
             📝 Blogs
         </a>
     </nav>

@@ -25,7 +25,7 @@
             bg-gradient-to-br from-[#0f0c29] via-[#302b63] to-[#24243e]
             p-4 sm:p-6">
 
-    <form action="/login" method="POST"
+    <form action="/admin/login" method="POST"
           class="backdrop-blur-xl bg-white/10 border border-white/20 
                  shadow-2xl rounded-2xl 
                  w-full max-w-sm sm:max-w-md md:max-w-lg 

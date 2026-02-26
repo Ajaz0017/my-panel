@@ -4,7 +4,7 @@
 
 <!-- ================= TOP ACTION ================= -->
 <div class="flex flex-col sm:flex-row sm:items-center sm:justify-end gap-4 mb-6">
-    <a href="/products/create"
+    <a href="/admin/products/create"
        class="inline-flex items-center justify-center gap-2 px-4 py-3 
               rounded-xl bg-blue-600 hover:bg-blue-700 transition 
               font-medium shadow-lg">
@@ -51,13 +51,13 @@
             </span>
 
             <div class="flex gap-3 pt-2">
-                <a href="/products/{{ $product->id }}/edit"
+                <a href="/admin/products/{{ $product->id }}/edit"
                    class="flex-1 py-3 rounded-xl bg-white/10 hover:bg-white/20 
                           transition text-sm text-center">
                     ✏️ Edit
                 </a>
 
-                <form action="/products/{{ $product->id }}" method="POST" class="flex-1">
+                <form action="/admin/products/{{ $product->id }}" method="POST" class="flex-1">
                     @csrf
                     @method('DELETE')
                     <button onclick="return confirm('Delete this product?')"
@@ -119,13 +119,13 @@
                     </td>
 
                     <td class="px-5 py-4 text-right space-x-2">
-                        <a href="/products/{{ $product->id }}/edit"
+                        <a href="/admin/products/{{ $product->id }}/edit"
                            class="inline-block px-4 py-2 rounded-lg 
                                   bg-white/10 hover:bg-white/20 transition">
                             ✏️ Edit
                         </a>
 
-                        <form action="/products/{{ $product->id }}"
+                        <form action="/admin/products/{{ $product->id }}"
                               method="POST"
                               class="inline-block">
                             @csrf

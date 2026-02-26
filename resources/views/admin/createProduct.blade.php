@@ -18,7 +18,7 @@
                     p-5 sm:p-10">
 
             <form method="POST"
-                action="/products"
+                action="/admin/products"
                 enctype="multipart/form-data"
                 class="space-y-8">
                 @csrf
@@ -155,7 +155,7 @@
                         ➕ Add Product
                     </button>
 
-                    <a href="/products"
+                    <a href="/admin/products"
                        class="block w-full h-14 sm:h-16
                               rounded-2xl
                               bg-white/10 hover:bg-white/20

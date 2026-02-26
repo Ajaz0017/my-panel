@@ -10,7 +10,7 @@
 <div class="max-w-4xl mx-auto rounded-2xl sm:rounded-3xl bg-white/10 backdrop-blur-xl border border-white/20 shadow-2xl p-5 sm:p-10">
 
 <form method="POST"
-      action="/products/{{ $product->id }}"
+      action="/admin/products/{{ $product->id }}"
       enctype="multipart/form-data"
       class="space-y-8">
 @csrf
@@ -128,7 +128,7 @@
     💾 Update Product
 </button>
 
-<a href="/products" class="block w-full h-14 sm:h-16 rounded-2xl bg-white/10 hover:bg-white/20 flex items-center justify-center text-lg transition">Cancel</a>
+<a href="/admin/products" class="block w-full h-14 sm:h-16 rounded-2xl bg-white/10 hover:bg-white/20 flex items-center justify-center text-lg transition">Cancel</a>
 
 </form>
 </div>
@@ -205,7 +205,7 @@ function syncInputFiles() {
 function deleteImage(id) {
     if (!confirm('Remove this image?')) return;
 
-    fetch(`/products/images/${id}`, {
+    fetch(`/admin/products/images/${id}`, {
         method: 'DELETE',
         headers: {
             'X-CSRF-TOKEN': '{{ csrf_token() }}'

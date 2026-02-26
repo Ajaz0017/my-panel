@@ -57,7 +57,7 @@ class ProductController extends Controller
             }
         }
 
-        return redirect('/products')->with('success', 'Product created successfully');
+        return redirect('/admin/products')->with('success', 'Product created successfully');
     }
 
     public function edit(Product $product)
@@ -102,7 +102,7 @@ class ProductController extends Controller
             }
         }
 
-        return redirect('/products')->with('success', 'Product updated successfully');
+        return redirect('/admin/products')->with('success', 'Product updated successfully');
     }
 
     public function destroyImage(ProductImage $image)
@@ -125,7 +125,7 @@ class ProductController extends Controller
 
         $product->delete();
 
-        return redirect('/products')
+        return redirect('/admin/products')
             ->with('success', 'Product deleted successfully');
     }
 }

@@ -43,7 +43,7 @@ class UserController extends Controller
             'is_active'      => $request->has('is_active'),
         ]);
 
-        return redirect('/users')->with('success', 'User created successfully');
+        return redirect('/admin/users')->with('success', 'User created successfully');
     }
 
     public function destroy(User $user)
@@ -54,7 +54,7 @@ class UserController extends Controller
 
         $user->delete();
 
-        return redirect('/users')->with('success', 'User deleted successfully.');
+        return redirect('/admin/users')->with('success', 'User deleted successfully.');
     }
 
     public function edit(User $user)
@@ -89,6 +89,6 @@ class UserController extends Controller
 
         $user->update($data);
 
-        return redirect('/users')->with('success', 'User updated successfully');
+        return redirect('/admin/users')->with('success', 'User updated successfully');
     }
 }

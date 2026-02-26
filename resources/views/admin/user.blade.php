@@ -3,7 +3,7 @@
 @section('content')
 
 <div class="flex flex-col sm:flex-row sm:items-center sm:justify-end gap-4">
-    <a href="/users/create"
+    <a href="/admin/users/create"
        class="inline-flex items-center justify-center gap-2 px-4 py-3 
               rounded-xl bg-blue-600 hover:bg-blue-700 transition 
               font-medium shadow-lg">
@@ -46,12 +46,12 @@
             
 
             <div class="flex gap-3 pt-2">
-                <a href="/users/{{ $user->id }}/edit"
+                <a href="/admin/users/{{ $user->id }}/edit"
                    class="flex-1 py-2 rounded-xl bg-white/10 hover:bg-white/20 transition text-sm text-center">
                     ✏️ Edit
                 </a>
 
-                <form action="/users/{{ $user->id }}" method="POST" class="flex-1"
+                <form action="/admin/users/{{ $user->id }}" method="POST" class="flex-1"
                       onsubmit="return confirm('Delete this user?')">
                     @csrf
                     @method('DELETE')
@@ -107,12 +107,12 @@
                     </td>
 
                     <td class="px-5 py-4 text-right space-x-2">
-                        <a href="/users/{{ $user->id }}/edit"
+                        <a href="/admin/users/{{ $user->id }}/edit"
                            class="inline-block px-4 py-2 rounded-lg bg-white/10 hover:bg-white/20 transition">
                             ✏️ Edit
                         </a>
 
-                        <form action="/users/{{ $user->id }}" method="POST" class="inline"
+                        <form action="/admin/users/{{ $user->id }}" method="POST" class="inline"
                               onsubmit="return confirm('Delete this user?')">
                             @csrf
                             @method('DELETE')

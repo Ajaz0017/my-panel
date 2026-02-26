@@ -22,7 +22,7 @@
                 p-5 sm:p-10">
 
         <form method="POST"
-              action="/users/{{ $user->id }}"
+              action="/admin/users/{{ $user->id }}"
               class="space-y-7">
             @csrf
             @method('PUT')
@@ -123,7 +123,7 @@
                     Update User
                 </button>
 
-                <a href="/users"
+                <a href="/admin/users"
                    class="block w-full h-14 sm:h-16
                           rounded-2xl bg-white/10 hover:bg-white/20
                           flex items-center justify-center

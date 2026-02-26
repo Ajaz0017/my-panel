@@ -16,7 +16,7 @@
     <div class="rounded-2xl sm:rounded-3xl backdrop-blur-xl shadow-2xl
                 bg-white/10 border border-white/20 p-4 sm:p-8">
 
-        <form method="POST" action="/blogs/{{ $blog->id }}" class="space-y-6 sm:space-y-8">
+        <form method="POST" action="/admin/blogs/{{ $blog->id }}" class="space-y-6 sm:space-y-8">
             @csrf
             @method('PUT')
 
@@ -99,7 +99,7 @@
                     💾 Update Blog
                 </button>
 
-                <a href="/blogs"
+                <a href="/admin/blogs"
                    class="w-full sm:flex-1 h-14 sm:h-16
                           rounded-xl bg-white/10 hover:bg-white/20
                           flex items-center justify-center">

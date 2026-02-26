@@ -41,7 +41,7 @@ class BlogController extends Controller
             'is_featured' => $request->has('is_featured'),
         ]);
 
-        return redirect('/blogs')->with('success', 'Blog created successfully');
+        return redirect('/admin/blogs')->with('success', 'Blog created successfully');
     }
 
     public function edit(Blog $blog)
@@ -69,14 +69,14 @@ class BlogController extends Controller
             'is_featured' => $request->has('is_featured'),
         ]);
 
-        return redirect('/blogs')->with('success', 'Blog updated successfully');
+        return redirect('/admin/blogs')->with('success', 'Blog updated successfully');
     }
 
     public function destroy(Blog $blog)
     {
         $blog->delete();
 
-        return redirect('/blogs')
+        return redirect('/admin/blogs')
             ->with('success', 'Blog deleted successfully');
     }
 }

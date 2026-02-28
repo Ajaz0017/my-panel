@@ -15,7 +15,7 @@
 
         <button id="plusBtn" class="flex justify-center items-center">
             <div class="backdrop-blur-xl bg-white/10 border border-white/20 
-                        rounded-full w-14 h-14 flex items-center justify-center 
+                        rounded-full w-12.5 h-12.5 flex items-center justify-center 
                         text-white text-2xl shadow-lg active:scale-95 transition">
                 ➕
             </div>
@@ -30,26 +30,56 @@
         {{-- More Button --}}
         <button id="moreBtn"
             class="py-3 opacity-70 hover:opacity-100 transition flex flex-row items-end justify-center">
-            <div class="rotate-90 font-bold text-xl order-2">⋯</div>
+            ☰<br>
             More
         </button>
 
-        {{-- Popup Menu --}}
-        <div id="moreMenu"
-            class="hidden absolute bottom-16 right-3 w-44 rounded-2xl backdrop-blur-xl 
-                   bg-white/20 border border-white/30 shadow-xl overflow-hidden">
+        {{-- Modern More Menu --}}
+        <div id="moreMenu" class="invisible opacity-0 scale-95 pointer-events-none absolute bottom-0 flex justify-center items-center w-full h-screen z-50 transition-all duration-200 ease-out bg-black/40 backdrop-blur-sm">
+            <div id="moreOverlay"
+                class="absolute inset-0 bg-black/30 backdrop-blur-md">
+            </div>
+            <div class="relative w-[80%] rounded-3xl backdrop-blur-3xl">
 
-            <a href="/admin/blogs"
-               class="block px-4 py-3 text-sm hover:bg-white/20 transition 
-               {{ request()->is('admin/blogs*') ? 'text-blue-400 font-semibold' : '' }}">
-                📝 Blogs
-            </a>
+                {{-- Glass Card --}}
+                <div class="rounded-3xl bg-white/20 backdrop-blur-3xl border border-white/30 shadow-[0_10px_40px_rgba(0,0,0,0.35)] overflow-hidden">
 
-            <a href="/admin/naat-khawans"
-               class="block px-4 py-3 text-sm hover:bg-white/20 transition 
-               {{ request()->is('admin/naat-khawans*') ? 'text-blue-400 font-semibold' : '' }}">
-                🎤 Naat Khawans
-            </a>
+                    {{-- Gradient Overlay Layer --}}
+                    <div class="absolute inset-0 bg-gradient-to-br from-white/20 via-white/5 to-transparent pointer-events-none rounded-3xl"></div>
+                    <div class="relative">
+
+                        <div class="px-4 pt-1 text-[11px] uppercase tracking-widest 
+                                    text-white/50 border-b border-white/10">
+                            More
+                        </div>
+
+                        <a href="/admin/blogs"
+                        class="flex items-center gap-3 px-5 py-2 text-sm
+                                hover:bg-white/20 transition-all duration-150
+                                group {{ request()->is('admin/blogs*') ? 'text-blue-400 font-semibold' : 'text-white' }}">
+                            <span class="text-lg group-hover:scale-110 transition">📝</span>
+                            Blogs
+                        </a>
+
+                        <a href="/admin/naat-khawans"
+                        class="flex items-center gap-3 px-5 py-3 text-sm
+                                hover:bg-white/20 transition-all duration-150
+                                group {{ request()->is('admin/naat-khawans*') ? 'text-blue-400 font-semibold' : 'text-white' }}">
+                            <span class="text-lg group-hover:scale-110 transition">🎤</span>
+                            Naat Khawans
+                        </a>
+
+                    </div>
+                </div>
+
+                {{-- Arrow --}}
+                <div class="absolute -bottom-2 right-8 w-4 h-4
+                            bg-white/20 backdrop-blur-3xl
+                            border-r border-b border-white/30
+                            rotate-45 shadow-md">
+                </div>
+
+            </div>
         </div>
 
     </div>
@@ -103,27 +133,39 @@
 document.addEventListener("DOMContentLoaded", function () {
     const btn = document.getElementById("moreBtn");
     const menu = document.getElementById("moreMenu");
+    const overlayMore = document.getElementById("moreOverlay");
 
     if (!btn || !menu) return;
 
-    // Toggle Menu
+    function openMenu() {
+        menu.classList.remove("invisible", "opacity-0", "scale-95", "pointer-events-none");
+        menu.classList.add("opacity-100", "scale-100");
+    }
+
+    function closeMenu() {
+        menu.classList.add("opacity-0", "scale-95", "pointer-events-none");
+        menu.classList.remove("opacity-100", "scale-100");
+
+        setTimeout(() => {
+            menu.classList.add("invisible");
+        }, 200);
+    }
+
     btn.addEventListener("click", function (e) {
         e.stopPropagation();
-        menu.classList.toggle("hidden");
+        menu.classList.contains("opacity-100") ? closeMenu() : openMenu();
     });
 
-    // Outside Click Close
     document.addEventListener("click", function (e) {
         if (!menu.contains(e.target) && !btn.contains(e.target)) {
-            menu.classList.add("hidden");
+            closeMenu();
         }
     });
 
-    // Close on Link Click
+    overlayMore.addEventListener("click", closeMenu);
+
     menu.querySelectorAll("a").forEach(link => {
-        link.addEventListener("click", function () {
-            menu.classList.add("hidden");
-        });
+        link.addEventListener("click", closeMenu);
     });
 
     const plusBtn = document.getElementById("plusBtn");

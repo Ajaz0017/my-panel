@@ -66,6 +66,27 @@
                 </p>
             </div>
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
+            <div>
+                <label class="block text-sm font-medium mb-2 opacity-80">
+                    Select Naat Khawan
+                </label>
+
+                <select name="naat_khawan_id" id="naat_khawan_id"
+                        class="w-full h-14 px-4 sm:px-5
+                            rounded-xl bg-white/10 border border-white/20
+                            focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        required>
+
+                    <option class="bg-[#24243e]" value="">Select Naat Khawan</option>
+
+                    @foreach($naatKhawans as $khawan)
+                        <option class="bg-[#24243e]" value="{{ $khawan->id }}">
+                            {{ $khawan->name }}
+                        </option>
+                    @endforeach
+
+                </select>
+            </div>
                 <div>
                     <label class="block text-sm font-medium mb-2 opacity-80">
                         Status

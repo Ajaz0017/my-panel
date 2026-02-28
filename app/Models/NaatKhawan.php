@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Blog;
 
 class NaatKhawan extends Model
 {
@@ -32,15 +33,8 @@ class NaatKhawan extends Model
         return $query->where('is_active', true);
     }
 
-    /*
-    |--------------------------------------------------------------------------
-    | Relationships (Future Use)
-    |--------------------------------------------------------------------------
-    */
-
-    // Example:
-    // public function naats()
-    // {
-    //     return $this->hasMany(Naat::class);
-    // }
+    public function blogs()
+    {
+        return $this->hasMany(Blog::class);
+    }
 }

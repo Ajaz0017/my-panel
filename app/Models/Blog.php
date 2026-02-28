@@ -15,5 +15,11 @@ class Blog extends Model
         'content',
         'status',
         'is_featured',
+        'naat_khawan_id',
     ];
+
+    public function naatKhawan()
+    {
+        return $this->belongsTo(NaatKhawan::class);
+    }
 }

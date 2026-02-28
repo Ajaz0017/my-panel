@@ -21,13 +21,13 @@
         <section>
             <h2 class="text-sm font-semibold mb-3">Quick Actions</h2>
             <div class="grid grid-cols-2 sm:grid-cols-3 gap-4">
-                <a href="/users/create" class="py-4 text-center rounded-2xl bg-white/10 border border-white/20 hover:bg-white/20 transition">
+                <a href="/admin/users/create" class="py-4 text-center rounded-2xl bg-white/10 border border-white/20 hover:bg-white/20 transition">
                     ➕ Add User
                 </a>
-                <a href="/products/create" class="py-4 text-center rounded-2xl bg-white/10 border border-white/20 hover:bg-white/20 transition">
+                <a href="/admin/products/create" class="py-4 text-center rounded-2xl bg-white/10 border border-white/20 hover:bg-white/20 transition">
                     ➕ Add Product
                 </a>
-                <a href="/blogs/create" class="py-4 rounded-2xl text-center bg-white/10 border border-white/20 hover:bg-white/20 transition">
+                <a href="/admin/blogs/create" class="py-4 rounded-2xl text-center bg-white/10 border border-white/20 hover:bg-white/20 transition">
                     ➕ Add Blog
                 </a>
                 <!-- <a href="reports" class="py-4 rounded-2xl text-center bg-white/10 border border-white/20 hover:bg-white/20 transition">

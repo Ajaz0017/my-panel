@@ -7,6 +7,11 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\BlogController;
 
+Route::livewire('/', 'pages::naat.home');
+Route::livewire('/view/{slug}', 'pages::naat.view');
+Route::livewire('/about', 'pages::naat.about');
+
+// admin panel routes
 Route::prefix('admin')->group(function (): void {
     Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
     Route::post('/login', [AuthController::class, 'login']);

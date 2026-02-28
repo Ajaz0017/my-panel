@@ -1,14 +1,24 @@
 <?php
 
 use Livewire\Component;
+use App\Models\Blog;
+use App\Models\NaatKhawan;
 
 new class extends Component
 {
     public $blogs = [];
+    public $authors;
     
     public function mount()
     {
-        $this->blogs = \App\Models\Blog::latest()->take(5)->get();
+        $this->blogs = Blog::with('naatKhawan')
+            ->latest()
+            ->limit(10)
+            ->get();
+
+        $this->authors = NaatKhawan::where('is_active', 1)
+            ->orderBy('name')
+            ->get();
     }
 };
 ?>
@@ -21,13 +31,45 @@ new class extends Component
     wire:ignore
     class="relative min-h-screen overflow-hidden bg-[#0B0E14] text-white"
 >
+{{-- ✅ AUTHORS STORY STRIP --}}
+    <section class="relative z-10 pt-3 px-4">
 
+        <div class="flex gap-x-5 overflow-x-auto no-scrollbar">
+
+            @foreach ($authors as $author)
+                <a href="{{ url('/author/'.$author->id) }}" {{-- ✅ author page link --}}
+                class="flex flex-col items-center w-20 group">
+
+                    {{-- PROFILE IMAGE --}}
+                    <div class="relative">
+                        <div class="w-16 h-16 rounded-full
+                                    p-[3px]
+                                    bg-gradient-to-tr from-fuchsia-500 via-cyan-400 to-blue-500
+                                    group-hover:scale-105 transition">
+
+                            <img src="{{ asset('storage/'.$author->profile_image) }}" {{-- ✅ profile image --}}
+                                alt="{{ $author->name }}"
+                                class="w-full h-full rounded-full object-cover border-2 border-[#0B0E14]">
+                        </div>
+                    </div>
+
+                    {{-- NAME --}}
+                    <p class="mt-2 w-full text-xs text-center text-wrap text-gray-300 group-hover:text-white transition">
+                        {{ $author->name }}
+                    </p>
+
+                </a>
+            @endforeach
+
+        </div>
+
+    </section>
     <!-- 🌈 Animated Background -->
     <div class="blob-1 absolute -top-40 -left-40 h-[420px] w-[420px] rounded-full bg-fuchsia-600/30 blur-[160px]"></div>
     <div class="blob-2 absolute bottom-0 -right-40 h-[420px] w-[420px] rounded-full bg-cyan-500/30 blur-[160px]"></div>
 
     <!-- BLOG LIST -->
-    <section class="relative z-10 pt-6 px-4 pb-32 max-w-5xl mx-auto space-y-10">
+    <section class="relative z-10 pt-4 px-4 pb-32 max-w-5xl mx-auto space-y-10">
 
         @foreach($blogs as $blog)
             <article
@@ -49,7 +91,7 @@ new class extends Component
                     {{ $blog->title }}
                 </h2>
 
-                <p class="mt-4 text-gray-300 text-base leading-relaxed">
+                <p class="mt-4 text-gray-300 text-base leading-relaxed max-h-14 overflow-hidden">
                     {{ $blog->content }}
                 </p>
 
@@ -143,4 +185,13 @@ document.addEventListener('alpine:init', () => {
     }))
 })
 </script>
+<style>
+.no-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+.no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+</style>
 @endpush

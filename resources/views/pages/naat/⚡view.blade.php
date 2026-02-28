@@ -14,9 +14,13 @@ new class extends Component
     {
         $this->slug = $slug;
 
-        $this->naat = Blog::where('slug', $slug)->firstOrFail();
+        $this->naat = Blog::with('naatKhawan')
+            ->where('slug', $slug)
+            ->firstOrFail();
 
-        $this->related = Blog::where('id', '!=', $this->naat->id)
+        $this->related = Blog::with('naatKhawan')
+            ->where('id', '!=', $this->naat->id)
+            ->where('naat_khawan_id', $this->naat->naat_khawan_id)
             ->limit(3)
             ->get();
     }
@@ -56,8 +60,8 @@ new class extends Component
         </h1>
 
         <div class="mt-4 flex flex-wrap justify-center gap-4 text-sm text-gray-400">
-            <span>🎙 {{ $naat->khawan }}</span>
-            <span class="opacity-50">⏱ {{ $naat->duration }}</span>
+            <span>🎙 {{ $naat->naatKhawan->name }}</span>
+            <!-- <span class="opacity-50">⏱ {{ $naat->duration }}</span> -->
         </div>
     </section>
 
@@ -79,7 +83,7 @@ new class extends Component
         <section class="related relative z-10 mt-16 md:mt-24 max-w-4xl mx-auto px-5 pb-32">
 
             <h3 class="text-xl font-semibold mb-6 text-gray-300">
-                More by {{ $naat->khawan }}
+                More by {{ $naat->naatKhawan->name }}
             </h3>
 
             <div class="grid gap-4 sm:grid-cols-2">

@@ -8,6 +8,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\NaatKhawanController;
 
+// Naat Verse routes
 Route::livewire('/', 'pages::naat.home');
 Route::livewire('/view/{slug}', 'pages::naat.view');
 Route::livewire('/about', 'pages::naat.about');

@@ -16,16 +16,13 @@
         </a>
     </nav>
 
-    <!-- <div class="p-4">
-        <form method="POST" action="{{ route('logout') }}">
-            @csrf
-            <button
-                onclick="return confirm('Logout karna hai?')"
-                class="w-full py-3 rounded-xl
-                       bg-red-500/80 hover:bg-red-600
+    <div class="p-4">
+            <a
+                href="https://naatverse.com"
+                class="w-full block text-center py-3 rounded-xl
+                       bg-purple-600/30 hover:bg-purple-600/50
                        transition font-medium">
-                🚪 Logout
-            </button>
-        </form>
-    </div> -->
+                Naat Verse
+            </a>
+    </div>
 </aside>

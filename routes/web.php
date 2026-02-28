@@ -6,6 +6,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\BlogController;
+use App\Http\Controllers\NaatKhawanController;
 
 Route::livewire('/', 'pages::naat.home');
 Route::livewire('/view/{slug}', 'pages::naat.view');
@@ -41,12 +42,18 @@ Route::prefix('admin')->group(function (): void {
 
         // blogs routes
         Route::get('blogs', [BlogController::class, 'index']);
+        Route::get('naat-khawans', [NaatKhawanController::class, 'index']);
         Route::middleware('blog.access')->group(function () {
             Route::get('blogs/create', [BlogController::class, 'create']);
             Route::post('/blogs', [BlogController::class, 'store']);
             Route::get('/blogs/{blog}/edit', [BlogController::class, 'edit']);
             Route::put('/blogs/{blog}', [BlogController::class, 'update']);
             Route::delete('/blogs/{blog}', [BlogController::class, 'destroy']);
+            Route::get('naat-khawans/create', [NaatKhawanController::class, 'create']);
+            Route::post('/naat-khawans', [NaatKhawanController::class, 'store']);
+            Route::get('/naat-khawans/{naatKhawan}/edit', [NaatKhawanController::class, 'edit']);
+            Route::put('/naat-khawans/{naatKhawan}', [NaatKhawanController::class, 'update']);
+            Route::delete('/naat-khawans/{naatKhawan}', [NaatKhawanController::class, 'destroy']);
         });
     });
 });

@@ -6,6 +6,7 @@ use App\Models\User;
 use App\Models\Product;
 use App\Models\Blog;
 use Carbon\Carbon;
+use App\Models\NaatKhawan;
 
 class DashboardController extends Controller
 {
@@ -21,6 +22,7 @@ class DashboardController extends Controller
             'usersCount'    => User::count(),
             'productsCount' => Product::count(),
             'blogsCount'    => Blog::count(),
+            'authorsCount'  => NaatKhawan::count(),
 
             'labels' => $days->map(fn ($d) => Carbon::parse($d)->format('D'))->values(),
 
@@ -34,6 +36,10 @@ class DashboardController extends Controller
 
             'blogsWeekly' => $days->map(fn ($d) =>
                 Blog::whereDate('created_at', $d)->count()
+            )->values(),
+
+            'authorsWeekly' => $days->map(fn ($d) =>
+                NaatKhawan::whereDate('created_at', $d)->count()
             )->values(),
         ]);
     }

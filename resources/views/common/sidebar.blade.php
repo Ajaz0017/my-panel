@@ -14,7 +14,7 @@
         <a href="/admin/blogs" class="block px-4 py-3 rounded-xl transition {{ request()->is('admin/blogs*') ? 'bg-blue-600 shadow' : 'hover:bg-white/10' }}">
             📝 Blogs
         </a>
-        <a href="/admin/naat-khawans" class="block px-4 py-3 rounded-xl transition {{ request()->is('admin/naat-khawans*') ? 'bg-blue-600 shadow' : 'hover:bg-white/10' }}">🎤 Naat Khawans< /a>
+        <a href="/admin/naat-khawans" class="block px-4 py-3 rounded-xl transition {{ request()->is('admin/naat-khawans*') ? 'bg-blue-600 shadow' : 'hover:bg-white/10' }}"> 🎤 Naat Khawans </a>
     </nav>
 
     <div class="p-4">

@@ -81,9 +81,9 @@ new class extends Component
                 <span class="h-1 w-10 rounded-full bg-white/30"></span>
             </div>
 
-            <div class="px-6 py-6 space-y-5 text-center text-lg text-white">
-                <div class="sheet-item" @click="go('/')">Home</div>
-                <div class="sheet-item" @click="go('/about')">About</div>
+            <div class="px-6 py-6 space-y-5 text-center text-lg text-white flex flex-col items-center">
+                <a wire:navigate class="sheet-item" href="/">Home</a>
+                <a wire:navigate class="sheet-item" href="/about">About</a>
             </div>
         </div>
     </template>

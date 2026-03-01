@@ -34,7 +34,7 @@ new class extends Component
     ></div>
 
     {{-- HERO --}}
-    <section class="about-hero relative z-10 pt-20 md:pt-28 px-5 text-center max-w-3xl mx-auto">
+    <section class="about-hero relative z-10 pt-12 md:pt-22 px-5 text-center max-w-3xl mx-auto">
         <h1 class="text-4xl sm:text-6xl font-extrabold leading-tight">
             <span class="block text-transparent bg-clip-text
                          bg-gradient-to-r from-cyan-400 to-fuchsia-500">
@@ -60,7 +60,7 @@ and no distractions.',
 with audio recitations and richer experiences.'
     ] as $title => $content)
 
-        <section class="reveal relative z-10 mt-16 px-5 max-w-4xl mx-auto mb-10">
+        <section class="reveal relative z-10 mt-16 px-5 max-w-4xl mx-auto mb-10 md:mb-22">
             <div class="rounded-3xl bg-white/5 backdrop-blur-xl border border-white/10 p-8 sm:p-12">
 
                 <h2 class="text-2xl font-semibold mb-4">

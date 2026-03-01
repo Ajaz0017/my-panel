@@ -66,7 +66,7 @@ new class extends Component
     </section>
 
     {{-- LYRICS --}}
-    <section class="lyrics relative z-10 mt-6 md:mt-16 max-w-3xl mx-auto px-5 space-y-6">
+    <section class="lyrics relative z-10 mt-6 md:mt-16 max-w-3xl mx-auto px-5 space-y-6 mb-10 md:mb-16">
         @foreach (explode("\r\n\r\n\r\n", $naat->content) as $line)
             <div class="sher rounded-2xl border transition-all duration-700 text-center
                 {{ $readingMode

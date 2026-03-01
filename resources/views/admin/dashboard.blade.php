@@ -1,26 +1,31 @@
 @extends('layouts.admin')
 
 @section('content')
-        <section class="grid grid-cols-2 sm:grid-cols-3 gap-4">
+        <section class="grid grid-cols-2 sm:grid-cols-4 gap-4">
             <div class="p-4 rounded-2xl bg-white/10 border border-white/20">
-                <p class="text-xs opacity-70">Users</p>
-                <h2 class="text-2xl font-bold">{{$usersCount}}</h2>
+                <p class="text-xs opacity-70">Blogs</p>
+                <h2 class="text-2xl font-bold">{{$blogsCount}}</h2>
+            </div>
+
+            <div class="p-4 rounded-2xl bg-white/10 border border-white/20">
+                <p class="text-xs opacity-70">Naat Khawans</p>
+                <h2 class="text-2xl font-bold">{{$authorsCount}}</h2>
             </div>
 
             <div class="p-4 rounded-2xl bg-white/10 border border-white/20">
                 <p class="text-xs opacity-70">Products</p>
                 <h2 class="text-2xl font-bold">{{$productsCount}}</h2>
             </div>
-
+            
             <div class="p-4 rounded-2xl bg-white/10 border border-white/20">
-                <p class="text-xs opacity-70">Blogs</p>
-                <h2 class="text-2xl font-bold">{{$blogsCount}}</h2>
+                <p class="text-xs opacity-70">Users</p>
+                <h2 class="text-2xl font-bold">{{$usersCount}}</h2>
             </div>
         </section>
 
         <section>
             <h2 class="text-sm font-semibold mb-3">Quick Actions</h2>
-            <div class="grid grid-cols-2 sm:grid-cols-3 gap-4">
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
                 <a href="/admin/users/create" class="py-4 text-center rounded-2xl bg-white/10 border border-white/20 hover:bg-white/20 transition">
                     ➕ Add User
                 </a>
@@ -29,6 +34,9 @@
                 </a>
                 <a href="/admin/blogs/create" class="py-4 rounded-2xl text-center bg-white/10 border border-white/20 hover:bg-white/20 transition">
                     ➕ Add Blog
+                </a>
+                <a href="/admin/naat-khawans/create" class="py-4 rounded-2xl text-center bg-white/10 border border-white/20 hover:bg-white/20 transition">
+                    ➕ Add Naat Khawan
                 </a>
                 <!-- <a href="reports" class="py-4 rounded-2xl text-center bg-white/10 border border-white/20 hover:bg-white/20 transition">
                     📄 View Reports
@@ -41,8 +49,13 @@
 
     <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
         <div class="p-4 rounded-2xl bg-white/10 border border-white/20">
-            <canvas id="usersChart"></canvas>
-            <p class="text-center text-xs mt-1">Users Chart</p>
+            <canvas id="blogsChart"></canvas>
+            <p class="text-center text-xs mt-1">Blogs Chart</p>
+        </div>
+
+        <div class="p-4 rounded-2xl bg-white/10 border border-white/20">
+            <canvas id="naatKhawansChart"></canvas>
+            <p class="text-center text-xs mt-1">Naat khawans Chart</p>
         </div>
 
         <div class="p-4 rounded-2xl bg-white/10 border border-white/20">
@@ -51,8 +64,8 @@
         </div>
 
         <div class="p-4 rounded-2xl bg-white/10 border border-white/20">
-            <canvas id="blogsChart"></canvas>
-            <p class="text-center text-xs mt-1">Blogs Chart</p>
+            <canvas id="usersChart"></canvas>
+            <p class="text-center text-xs mt-1">Users Chart</p>
         </div>
     </div>
 </section>
@@ -108,6 +121,20 @@
             datasets: [{
                 label: 'Blogs',
                 data: @json($blogsWeekly),
+                borderWidth: 2,
+                tension: 0.4
+            }]
+        },
+        options: baseOptions
+    });
+
+    new Chart(document.getElementById('naatKhawansChart'), {
+        type: 'line',
+        data: {
+            labels,
+            datasets: [{
+                label: 'Naat Khawans',
+                data: @json($authorsWeekly),
                 borderWidth: 2,
                 tension: 0.4
             }]

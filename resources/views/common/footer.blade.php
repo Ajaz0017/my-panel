@@ -8,9 +8,9 @@
         </a>
 
         {{-- Users --}}
-        <a href="/admin/users"
-           class="py-3 transition {{ request()->is('admin/users*') ? 'text-blue-400 font-semibold' : 'opacity-70 hover:opacity-100' }}">
-            👥<br>Users
+        <a href="/admin/blogs"
+           class="py-3 transition {{ request()->is('admin/blogs*') ? 'text-blue-400 font-semibold' : 'opacity-70 hover:opacity-100' }}">
+            📝<br>Blogs
         </a>
 
         <button id="plusBtn" class="flex justify-center items-center">
@@ -22,9 +22,9 @@
         </button>
 
         {{-- Products --}}
-        <a href="/admin/products"
-           class="py-3 transition {{ request()->is('admin/products*') ? 'text-blue-400 font-semibold' : 'opacity-70 hover:opacity-100' }}">
-            📦<br>Products
+        <a href="/admin/users"
+           class="py-3 transition {{ request()->is('admin/users*') ? 'text-blue-400 font-semibold' : 'opacity-70 hover:opacity-100' }}">
+            👥<br>Users
         </a>
 
         {{-- More Button --}}
@@ -35,11 +35,11 @@
         </button>
 
         {{-- Modern More Menu --}}
-        <div id="moreMenu" class="invisible opacity-0 scale-95 pointer-events-none absolute bottom-0 flex justify-center items-center w-full h-screen z-50 transition-all duration-200 ease-out bg-black/40 backdrop-blur-sm">
+        <div id="moreMenu" class="invisible opacity-0 scale-95 pointer-events-none absolute bottom-0 flex justify-end items-end w-full h-screen z-50 transition-all duration-200 ease-out bg-black/40 backdrop-blur-sm">
             <div id="moreOverlay"
                 class="absolute inset-0 bg-black/30 backdrop-blur-md">
             </div>
-            <div class="relative w-[80%] rounded-3xl backdrop-blur-3xl">
+            <div class="relative w-fit rounded-3xl backdrop-blur-3xl bottom-24 right-4">
 
                 {{-- Glass Card --}}
                 <div class="rounded-3xl bg-white/20 backdrop-blur-3xl border border-white/30 shadow-[0_10px_40px_rgba(0,0,0,0.35)] overflow-hidden">
@@ -53,20 +53,28 @@
                             More
                         </div>
 
-                        <a href="/admin/blogs"
-                        class="flex items-center gap-3 px-5 py-2 text-sm
+                        <a href="/admin/products"
+                        class="flex flex-col items-center gap-3 px-3 py-2 text-sm
                                 hover:bg-white/20 transition-all duration-150
-                                group {{ request()->is('admin/blogs*') ? 'text-blue-400 font-semibold' : 'text-white' }}">
-                            <span class="text-lg group-hover:scale-110 transition">📝</span>
-                            Blogs
+                                group {{ request()->is('admin/products*') ? 'text-blue-400 font-semibold' : 'text-white' }}">
+                            <p class="text-lg group-hover:scale-110 transition h-15 w-15 bg-red-500/20 rounded-full flex items-center justify-center"><span class="font-bold text-3xl"><span>📦</span></p>
+                            <p class="text-xs font-bold">Products</p>
                         </a>
 
                         <a href="/admin/naat-khawans"
-                        class="flex items-center gap-3 px-5 py-3 text-sm
+                        class="flex flex-col items-center gap-3 px-3 py-3 text-sm
                                 hover:bg-white/20 transition-all duration-150
                                 group {{ request()->is('admin/naat-khawans*') ? 'text-blue-400 font-semibold' : 'text-white' }}">
-                            <span class="text-lg group-hover:scale-110 transition">🎤</span>
-                            Naat Khawans
+                            <p class="text-lg group-hover:scale-110 transition h-15 w-15 bg-red-500/20 rounded-full flex items-center justify-center"><span class="font-bold text-3xl">🎤</span></p>
+                            <p class="text-xs font-bold">Naat Khawans</p>
+                        </a>
+
+                        <a href="https://naatverse.com"
+                        class="flex flex-col items-center gap-3 px-3 py-3 text-sm
+                                hover:bg-white/20 transition-all duration-150
+                                group {{ request()->is('admin/naat-khawans*') ? 'text-blue-400 font-semibold' : 'text-white' }}">
+                            <p class="text-lg group-hover:scale-110 transition h-15 w-15 bg-red-500/20 rounded-full flex items-center justify-center"><span class="font-bold text-xl">NV</span></p>
+                            <p class="text-xs font-bold">Naat Verse</p>
                         </a>
 
                     </div>
